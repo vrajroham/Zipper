@@ -180,7 +180,7 @@ class Zipper
             };
         } else {
             $matchingMethod = function ($haystack) use ($files) {
-                return starts_with($haystack, $files);
+                return startsWith($haystack, $files);
             };
         }
 
@@ -323,7 +323,7 @@ class Zipper
         if (is_array($fileToRemove)) {
             $self = $this;
             $this->repository->each(function ($file) use ($fileToRemove, $self) {
-                if (starts_with($file, $fileToRemove)) {
+                if (startsWith($file, $fileToRemove)) {
                     $self->getRepository()->removeFile($file);
                 }
             });
@@ -593,7 +593,7 @@ class Zipper
         $self = $this;
         $this->repository->each(function ($fileName) use ($path, $matchingMethod, $self) {
             $currentPath = $self->getCurrentFolderWithTrailingSlash();
-            if (!empty($currentPath) && !starts_with($fileName, $currentPath)) {
+            if (!empty($currentPath) && !startsWith($fileName, $currentPath)) {
                 return;
             }
 
